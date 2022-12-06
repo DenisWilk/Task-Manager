@@ -10,6 +10,7 @@ import {
   setIsRemoveColumn,
   setIsRemoveTask,
   setModalOpen,
+  setDeleteUser,
 } from '../../redux/modal-slice/modalSlice';
 
 export default function CloseModalButton() {
@@ -24,6 +25,7 @@ export default function CloseModalButton() {
     dispatch(setModalOpen(false));
     dispatch(setIsCreateBoard(false));
     dispatch(setIsEditTask(false));
+    dispatch(setDeleteUser(false));
   };
   return (
     <>
