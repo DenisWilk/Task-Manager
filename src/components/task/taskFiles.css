@@ -5,6 +5,7 @@
     text-align: center;
     padding: 5px;
     border: var(--border1);
+    margin-bottom: 20px;
 }
 
 .task-files__title {

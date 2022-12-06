@@ -1,7 +1,4 @@
 .add-board-button {
-  position: absolute;
-  bottom: 50px;
-  right: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,7 +10,8 @@
   background-color: transparent;
   border: var(--border1);
   border-radius: 5px;
-  z-index: 1000;
+  margin-left: auto;
+  margin-right: 15px;
 }
 
 .add-board-button.dark {

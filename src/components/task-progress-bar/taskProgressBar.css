@@ -26,7 +26,7 @@
 }
 
 .progress-scale {
-  height: 5px;
+  height: 100%;
   background-color: #40df94;
   border-radius: 5px;
   visibility: hidden;

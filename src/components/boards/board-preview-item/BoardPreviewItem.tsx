@@ -22,6 +22,7 @@ interface IProp {
   index: number;
   userBoard: IUserBoard;
 }
+
 export default function BoardPreviewItem(props: IProp) {
   const { userBoard, index } = props;
   const state = useAppSelector((store) => store.settingsSlice);
@@ -178,9 +179,9 @@ export default function BoardPreviewItem(props: IProp) {
             )
           )}
         </section>
-      </div>
-      <div id={userBoard.id} className={'board-delete-btn ' + state.themeIndex}>
-        <CrossButton id={userBoard.id!} goToModalWindow={goToModalWindow} />
+        <div id={userBoard.id} className={'board-delete-btn ' + state.themeIndex}>
+          <CrossButton id={userBoard.id!} goToModalWindow={goToModalWindow} />
+        </div>
       </div>
     </div>
   );
