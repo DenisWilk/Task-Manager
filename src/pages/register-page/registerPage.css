@@ -1,0 +1,239 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 25px);
+  padding: 50px 20px 40px;
+  background-color: var(--background-color1);
+}
+
+.register-container.dark {
+  background-color: var(--background-color2);
+}
+
+.register-container.color {
+  background-color: var(--background-color3);
+}
+
+.welcome-page-link-container {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+}
+
+.register-note {
+  padding: 50px 0 50px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color1);
+}
+
+.register-note.dark {
+  color: var(--color2);
+}
+
+.register-note.color {
+  color: var(--color3);
+}
+
+.register-note-link,
+.register-note-link-arrow {
+  padding-left: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--link-color1);
+  text-decoration: none;
+}
+
+.register-note-link.dark,
+.register-note-link-arrow.dark {
+  color: var(--link-color2);
+}
+
+.register-note-link.color,
+.register-note-link-arrow.color {
+  color: var(--link-color3);
+}
+
+.register-note-link-arrow {
+  padding-left: 0;
+  font-size: 16px;
+}
+
+.register-note-link:hover {
+  text-decoration: underline;
+}
+
+.sign-up-form,
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+
+.sign-up-form__title,
+.sign-in-form__title {
+  width: 100%;
+  margin: 0px 0px 24px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color1);
+}
+
+.sign-up-form__title.dark,
+.sign-in-form__title.dark {
+  color: var(--color2);
+}
+
+.sign-up-form__title.color,
+.sign-in-form__title.color {
+  color: var(--color3);
+}
+
+.sign-up-form__item,
+.sign-in-form__item {
+  width: 100%;
+  margin-bottom: 10px;
+  color: var(--color1);
+}
+
+.sign-up-form__item.dark,
+.sign-in-form__item.dark {
+  color: var(--color2);
+}
+
+.sign-up-form__item.color,
+.sign-in-form__item.color {
+  color: var(--color3);
+}
+
+.sign-up-form__input,
+.sign-in-form__input {
+  padding: 4px 6px;
+  font-weight: 600;
+  color: var(--color1);
+  border: var(--border1);
+  border-radius: 3px;
+  background-color: var(--background-color4);
+}
+
+.sign-up-form__input.dark,
+.sign-in-form__input.dark {
+  color: var(--color2);
+  border: var(--border2);
+  background-color: var(--background-color5);
+}
+
+.sign-up-form__input.color,
+.sign-in-form__input.color {
+  color: var(--color3);
+  border: var(--border3);
+  background-color: var(--background-color6);
+}
+
+.sign-up-form__item label,
+.sign-in-form__item label {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.sign-up-form__item button,
+.sign-in-form__item button,
+.form-success__button {
+  min-width: 130px;
+  height: 30px;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.submit__button,
+.form-success__button {
+  color: var(--color1);
+  border: var(--border1);
+  background-color: var(--background-color4);
+}
+
+.submit__button.dark,
+.form-success__button.dark {
+  color: var(--color2);
+  border: var(--border2);
+  background-color: var(--background-color5);
+}
+
+.submit__button.color,
+.form-success__button.color {
+  color: var(--color3);
+  border: var(--border3);
+  background-color: var(--background-color6);
+}
+
+.submit__button:hover,
+.form-success__button:hover {
+  background-color: var(--background-color1);
+  box-shadow: -1px 1px #e1e1e1;
+}
+
+.submit__button.dark:hover,
+.form-success__button.dark:hover {
+  background-color: var(--background-color2);
+}
+
+.submit__button.color:hover,
+.form-success__button.color:hover {
+  background-color: var(--background-color3);
+}
+
+.sign-up-form__item.password,
+.sign-in-form__item.password {
+  margin-bottom: 30px;
+}
+
+.sign-up-form__item input,
+.sign-in-form__item input {
+  display: block;
+  width: inherit;
+}
+
+.sign-up-form__item.buttons,
+.sign-in-form__item.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-messages {
+  font-size: 16px;
+  color: #e1001f;
+}
+
+.form-success,
+.form-failed {
+  width: 100%;
+  min-height: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-failed {
+  color: #e1001f;
+}
+
+.form-success {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: green;
+}
+
+.form-success__button {
+  font-size: 16px;
+}

@@ -1,0 +1,30 @@
+.confirm-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  z-index: 1000;
+}
+
+.confirm-button:hover {
+  border: 1px solid rgba(73, 173, 73, 0.411);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-button__yes {
+  position: absolute;
+  top: -2.5px;
+  right: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  fill: rgba(73, 173, 73, 0.411);
+}
+.confirm-button:hover .add-board-button__yes {
+  font-weight: 600;
+}

@@ -1,0 +1,27 @@
+.task-files-item {
+    display: flex;
+    flex: 1 0 100%;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.file-preview {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+}
+
+.default-image {
+    height: 40px;
+    width: 40px;
+}
+
+.default-image svg {
+    height: 100%;
+    width: 100%;
+}
+
+.file-preview img {
+    height: 100%;
+    width: 100%;
+}

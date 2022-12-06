@@ -1,0 +1,82 @@
+.add-board-button {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: var(--color1);
+  background-color: transparent;
+  border: var(--border1);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.add-board-button.dark {
+  color: var(--color2);
+}
+
+.add-board-button.color {
+  color: var(--color3);
+}
+
+.add-board-button:disabled {
+  border: var(--border1);
+  font-weight: 200;
+  border: var(--border1);
+  border-radius: 5px;
+}
+
+.add-board-button:disabled:hover {
+  cursor: not-allowed;
+  border: var(--border1);
+}
+
+.add-board-button:hover {
+  border: 1px solid #49ad4969;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-board-button:hover .add-board-button-svg {
+  font-weight: 600;
+}
+
+.add-board-button:disabled .add-board-button-svg {
+  fill: #e1e1e1;
+}
+
+.add-board-button:disabled .add-board-button-svg.dark {
+  fill: var(--color2);
+}
+
+.add-board-button:disabled .add-board-button-svg.color {
+  fill: var(--color3);
+}
+
+.add-board-button:disabled:hover .add-board-button_tooltip {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  display: inline-block;
+  width: 100px;
+  line-height: 15px;
+  color: #ff7878;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.add-board-button_tooltip {
+  display: none;
+  border-bottom: none;
+}
+
+.add-board-button-svg {
+  width: 40px;
+  height: 40px;
+  fill: #49ad4969;
+}

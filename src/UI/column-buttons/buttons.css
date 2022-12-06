@@ -1,0 +1,56 @@
+.button-new-task,
+.button-delete-column {
+    width: 20px;
+    height: 20px;
+    background-color: initial;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+.button-new-task:disabled,
+.button-delete-column:disabled {
+    cursor: default;
+}
+.button-new-task svg,
+.button-delete-column svg {
+    height: 100%;
+    width: 100%;
+}
+
+.button-new-task svg path {
+    fill: #9d9d9d;
+}
+
+.button-delete-column svg path {
+    fill: #ff7878;
+}
+.button-delete-column:disabled svg path,
+.button-new-task:disabled svg path {
+    fill: transparent;
+}
+.column-item__add-column {
+    height: 30px;
+    padding: 4px 14px;
+    line-height: 16px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    box-shadow: var(--box-shadow1);
+    border-radius: 3px;
+    border: var(--border1);
+    transition: 0.3s background-color, 0.3s color ease;
+}
+
+.column-item__add-column:hover {
+    background-color: var(--background-color3);
+    color: var(--color2);
+}
+
+.column-item__add-column:active {
+    box-shadow: 0px 0px 1px 0px #000000;
+}
+
+.column-item__add-column:focus {
+    outline: 2px solid var(--background-color3);
+}

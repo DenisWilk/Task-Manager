@@ -1,0 +1,37 @@
+.boarder-previwe-item__remove-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  padding: 0px;
+}
+
+.remove-button__cross {
+  fill: var(--color1);
+}
+
+.remove-button__cross.dark {
+  fill: var(--color2);
+}
+
+.remove-button__cross.color {
+  fill: var(--color3);
+}
+
+.boarder-previwe-item__remove-button:hover {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid rgba(184, 67, 67, 0.473);
+}
+.boarder-previwe-item__remove-button:active {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid rgba(184, 67, 67, 0.473);
+  transform: scale(0.95);
+}
+.boarder-previwe-item__remove-button:hover .remove-button__cross{
+  fill: rgba(184, 67, 67, 0.473);
+}

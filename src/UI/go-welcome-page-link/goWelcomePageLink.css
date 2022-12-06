@@ -1,0 +1,26 @@
+.welcome-link,
+.welcome-link-arrow {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--link-color1);
+  text-align: center;
+  text-decoration: none;
+}
+
+.welcome-link.dark,
+.welcome-link-arrow.dark {
+  color: var(--link-color2);
+}
+
+.welcome-link.color,
+.welcome-link-arrow.color {
+  color: var(--link-color3);
+}
+
+.welcome-link-arrow {
+  font-size: 14px;
+}
+
+.welcome-link:hover {
+  text-decoration: underline;
+}

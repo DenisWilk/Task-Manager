@@ -1,0 +1,51 @@
+.select,
+.option.light {
+  color: var(--color1);
+}
+
+.select.dark,
+.option.dark {
+  color: var(--color2);
+}
+
+.select.color,
+.option.color {
+  color: var(--color3);
+}
+
+.select:hover {
+  border: var(--border1);
+  box-shadow: -1px 1px #e1e1e1;
+}
+
+.select.dark:hover {
+  border: var(--border2);
+}
+
+.select.color:hover {
+  border: var(--border3);
+}
+
+.option:hover {
+  background-color: var(--background-color1);
+}
+
+.option.dark:hover {
+  background-color: var(--background-color2);
+}
+
+.option.color:hover {
+  background-color: var(--background-color3);
+}
+
+.option-icon {
+  fill: var(--color4);
+}
+
+.option-icon.dark {
+  fill: var(--color2);
+}
+
+.option-icon.color {
+  fill: var(--color3);
+}

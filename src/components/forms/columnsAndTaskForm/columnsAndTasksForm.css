@@ -1,0 +1,32 @@
+.create-board-form__description-input {
+  resize: none;
+}
+
+textarea.create-board-form__description-input {
+  padding-top: 10px;
+}
+
+.columns-and-task-form_container {
+    width: 100%;
+}
+
+.columns-and-task-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.columns-and-task-form__title-input {
+    width: 75%;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.columns-and-task-form__description-input {
+    width: 75%;
+    height: 100px;
+    border-radius: 3px;
+}

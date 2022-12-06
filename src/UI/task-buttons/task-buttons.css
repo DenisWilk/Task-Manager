@@ -1,0 +1,42 @@
+
+.button-edit-task,
+.button-done-task {
+    width: 25px;
+    height: 25px;
+    background-color: initial;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin: 0 3px 0 3px;
+}
+.button-edit-task:disabled,
+.button-done-task:disabled {
+    cursor: default;
+}
+.button-edit-task .svg-icon {
+    overflow: hidden;
+    height: 85%;
+    width: 85%;
+}
+.button-done-task .svg-icon {
+    vertical-align: middle;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.button-edit-task .svg-icon path {
+    fill: mediumblue;
+    height: 90%;
+    width: 90%;
+}
+.button-done-task .svg-icon path {
+    fill: rgba(29, 206, 29, 0.507);
+    height: 100%;
+    width: 100%;
+}
+.button-edit-task:disabled .svg-icon path,
+.button-done-task:disabled .svg-icon path {
+    fill: rgba(39, 34, 34, 0.473);
+}
+

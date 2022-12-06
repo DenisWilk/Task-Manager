@@ -1,0 +1,120 @@
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+  padding: 50px 20px 40px;
+  background-color: var(--background-color1);
+}
+
+.edit-container.dark {
+  background-color: var(--background-color2);
+}
+
+.edit-container.color {
+  background-color: var(--background-color3);
+}
+
+.return-to-boards {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+}
+
+.boards-link,
+.boards-link-arrow {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--link-color1);
+  text-align: center;
+  text-decoration: none;
+}
+
+.boards-link-arrow {
+  font-size: 14px;
+}
+
+.boards-link:hover {
+  text-decoration: underline;
+}
+
+.edit-profile-title {
+  margin-top: 50px;
+}
+
+.delete-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  width: 320px;
+  margin-top: 20px;
+  padding: 5px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--error-color);
+  border-top: var(--border1);
+  border-bottom: var(--border1);
+}
+
+.delete-btn-container.dark {
+  border-top: var(--border2);
+  border-bottom: var(--border2);
+}
+
+.delete-btn-container.color {
+  border-top: var(--border3);
+  border-bottom: var(--border3);
+}
+
+.delete-btn {
+  min-width: 130px;
+  height: 30px;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  color: var(--error-color);
+  border: var(--border1);
+  border-radius: 3px;
+  background-color: var(--background-color4);
+  cursor: pointer;
+}
+
+.delete-btn.dark {
+  border: var(--border2);
+  background-color: var(--background-color5);
+}
+
+.delete-btn.color {
+  border: var(--border3);
+  background-color: var(--background-color6);
+}
+
+.delete-btn:hover {
+  background-color: var(--background-color1);
+  box-shadow: -1px 1px #e1e1e1;
+}
+
+.delete-btn.dark:hover {
+  background-color: var(--background-color2);
+}
+
+.delete-btn.color:hover {
+  background-color: var(--background-color3);
+}
+
+.form-success-change {
+  color: green;
+  opacity: 0;
+  transition: 1.0s opacity ease-in-out;
+  min-height: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-success-change.visible {
+  opacity: initial;
+}

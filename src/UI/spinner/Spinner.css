@@ -1,0 +1,6 @@
+.spinner-wrapper {
+  position: absolute;
+  top: 30%;
+  left: calc(50% - 50px);
+  z-index: 5;
+}
