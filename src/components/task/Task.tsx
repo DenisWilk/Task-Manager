@@ -86,6 +86,7 @@ export const Task = (props: IProp) => {
             ></button>
             <input
               type="file"
+              autoComplete="off"
               onChange={handleFile}
               ref={fileBtn}
               className="vis-hidden"

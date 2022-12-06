@@ -41,6 +41,7 @@ export default function CreateBoardForm() {
     <>
       <form onSubmit={handleSubmit(boardCreateHandler)} className="board-form">
         <input
+          autoComplete="off"
           {...register('title', {
             required: 'This field is required',
             minLength: {
@@ -54,6 +55,7 @@ export default function CreateBoardForm() {
           autoFocus
         />
         <input
+          autoComplete="off"
           {...register('description', {
             required: 'This field is requaered',
             minLength: {

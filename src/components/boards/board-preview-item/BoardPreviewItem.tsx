@@ -130,6 +130,7 @@ export default function BoardPreviewItem(props: IProp) {
           <span className="board-preview-warning">{errors.title?.message && warnMessage}</span>
           <input
             type="text"
+            autoComplete="off"
             placeholder={`${errors.title?.message && errors.title?.message}`}
             className={'board-preview-title ' + state.themeIndex}
             {...register('title', {
@@ -147,6 +148,7 @@ export default function BoardPreviewItem(props: IProp) {
           </span>
           <input
             type="text"
+            autoComplete="off"
             placeholder={`${errors.description?.message && errors.description?.message}`}
             className={'board-preview-description ' + state.themeIndex}
             {...register('description', {

@@ -96,6 +96,7 @@ export default function ColumnsAndTaskForm() {
     <section className="columns-and-task-form_container">
       <form onSubmit={handleSubmit(columnOrTaskCreateHandler)} className="columns-and-task-form">
         <input
+          autoComplete="off"
           {...register('title', {
             onChange: (e: React.ChangeEvent<HTMLInputElement>) => titleCompairHandler(e),
             required: localeEN.columnAndTaskMessages.MESSAGE_REQUIRED[state.languageIndex],

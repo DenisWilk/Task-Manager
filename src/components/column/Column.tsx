@@ -75,6 +75,7 @@ export const Column = (props: IProp) => {
                 <input
                   className="column-item__title"
                   type="text"
+                  autoComplete="off"
                   defaultValue={title}
                   placeholder={
                     localeEN.tooTipContent.CANNOT_BE_EMPTY_PLACEHOLDER_MESSAGE[languageIndex]
