@@ -178,10 +178,10 @@ export default function BoardPreviewItem(props: IProp) {
               <TaskProgressBar boardId={userBoard.id!} />
             )
           )}
+          <div id={userBoard.id} className={'board-delete-btn ' + state.themeIndex}>
+            <CrossButton id={userBoard.id!} goToModalWindow={goToModalWindow} />
+          </div>
         </section>
-        <div id={userBoard.id} className={'board-delete-btn ' + state.themeIndex}>
-          <CrossButton id={userBoard.id!} goToModalWindow={goToModalWindow} />
-        </div>
       </div>
     </div>
   );
