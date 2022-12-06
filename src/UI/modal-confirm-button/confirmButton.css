@@ -17,9 +17,6 @@
 }
 
 .confirm-button__yes {
-  position: absolute;
-  top: -2.5px;
-  right: 0;
   display: block;
   width: 40px;
   height: 40px;

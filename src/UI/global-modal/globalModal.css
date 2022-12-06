@@ -33,7 +33,7 @@
   align-items: center;
   gap: 25px;
   width: 70%;
-  height: 35%;
+  max-height: 70%;
   margin: auto;
   padding: 30px 20px;
   background-color: var(--background-color4);
