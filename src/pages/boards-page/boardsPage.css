@@ -19,7 +19,7 @@
 .boards-page-items {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 95%;
 }
 
 .boards-page__title {
@@ -42,7 +42,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 80%;
+  width: 95%;
   margin-top: 10px;
 }
 

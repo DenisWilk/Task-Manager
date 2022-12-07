@@ -1,3 +1,7 @@
+.project-board {
+  padding-bottom: 20px;
+}
+
 .boards-link-container {
   display: flex;
   justify-content: space-between;
@@ -44,7 +48,6 @@
 .project-board__title {
   padding-left: 30px;
   letter-spacing: 3px;
-  text-decoration: underline;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -60,16 +63,15 @@
 
 .project-board__columns {
   height: 73vh;
-  max-height: 75vh;
   display: flex;
   justify-content: flex-start;
   padding: 10px 0px;
   line-height: initial;
+  overflow-x: auto;
 }
 
 .project-board__columns-list {
   display: flex;
-  height: 100%;
   padding: 10px 15px;
   column-gap: 20px;
   overflow-x: auto;

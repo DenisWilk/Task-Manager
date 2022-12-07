@@ -25,14 +25,13 @@
 .close-modal-button:active {
   cursor: pointer;
   border-radius: 3px;
-  border: 1px solid rgba(184, 67, 67, 0.473);
+  border: 1px solid #b84343ad;
   transform: scale(0.95);
 }
 
 .close-modal-button-svg {
   width: 35px;
   height: 35px;
-  fill: var(--color1);
 }
 
 .close-modal-button-svg.dark {

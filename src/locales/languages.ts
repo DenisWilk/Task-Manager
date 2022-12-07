@@ -13,8 +13,8 @@ export const languages = {
   startPage: ['Start page', 'На стартову', 'На стартавую', 'На стартовую'],
   createBoard: ['New board', 'Нова дошка', 'Новая дошка', 'Новая доска'],
   editProfile: ['Edit profile', 'Редаг. профіль', 'Рэдаг. профіль', 'Редакт. профиль'],
-  signOut: ['Sign out', 'Вийти', 'Выйсці', 'Выйти'],
-  toBoards: ['Boards', 'Дошки', 'Дошкi', 'Доски'],
+  signOut: ['Sign out ', 'Вийти ', 'Выйсці ', 'Выйти '],
+  toBoards: ['Boards ', 'Дошки ', 'Дошкi ', 'Доски '],
   welcome: [
     'Welcome to our task manager',
     'Вітаємо у нашому таск-менеджері',

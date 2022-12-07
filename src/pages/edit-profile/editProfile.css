@@ -30,6 +30,16 @@
   text-decoration: none;
 }
 
+.boards-link.dark,
+.boards-link-arrow.dark {
+  color: var(--link-color2);
+}
+
+.boards-link.color,
+.boards-link-arrow.color {
+  color: var(--link-color3);
+}
+
 .boards-link-arrow {
   font-size: 14px;
 }

@@ -134,17 +134,31 @@
 }
 
 .board-clickable-area {
+  position: relative;
   width: 100%;
   height: 100%;
+  padding: 10px 10px 17px;
   cursor: pointer;
+}
+
+.board-clickable-area-svg {
+  position: absolute;
+}
+
+.board-clickable-area-svg.dark {
+  fill: var(--color2);
+}
+
+.board-clickable-area-svg.color {
+  fill: var(--color3);
 }
 
 .board-delete-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 65px;
   height: 100%;
+  padding: 0 5px;
   border-left: var(--border1);
 }
 

@@ -14,13 +14,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 300px;
   flex: 0 0 300px;
+  width: 300px;
   border: var(--border1);
   border-radius: 6px;
   background-color: var(--background-color4);
   padding: 8px;
-  min-height: 65vh;
 }
 
 .column-item:hover {

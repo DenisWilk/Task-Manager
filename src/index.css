@@ -1,7 +1,7 @@
 @import '~@csstools/normalize.css';
 
 :root {
-  --color1: #0f0f0f;
+  --color1: #313131;
   --color2: #fefefe;
   --color3: #ebefd0;
   --color4: #3a3939;
@@ -10,8 +10,8 @@
   --success-color: #08995c;
 
   --link-color1: #2270ec;
-  --link-color2: #2270ec;
-  --link-color3: #2270ec;
+  --link-color2: #61c2e9;
+  --link-color3: #bbf3f6;
 
   --background-color1: #fefefe;
   --background-color2: #0f0f0f;

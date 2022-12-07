@@ -7,10 +7,17 @@
     border: none;
     cursor: pointer;
 }
+
+.button-delete-column {
+    width: 25px;
+    height: 25px;
+}
+
 .button-new-task:disabled,
 .button-delete-column:disabled {
     cursor: default;
 }
+
 .button-new-task svg,
 .button-delete-column svg {
     height: 100%;
@@ -24,10 +31,12 @@
 .button-delete-column svg path {
     fill: #ff7878;
 }
+
 .button-delete-column:disabled svg path,
 .button-new-task:disabled svg path {
     fill: transparent;
 }
+
 .column-item__add-column {
     height: 30px;
     padding: 4px 14px;

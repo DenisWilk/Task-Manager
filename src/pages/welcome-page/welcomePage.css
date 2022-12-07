@@ -86,12 +86,14 @@
 }
 
 .auth-link.dark,
-.auth-link-arrow.dark {
+.auth-link-arrow.dark,
+.auth-link-duplicate.dark {
   color: var(--link-color2);
 }
 
-.auth-link.dark,
-.auth-link-arrow.dark {
+.auth-link.color,
+.auth-link-arrow.color,
+.auth-link-duplicate.color {
   color: var(--link-color3);
 }
 

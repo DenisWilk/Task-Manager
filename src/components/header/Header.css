@@ -5,6 +5,7 @@
   justify-content: flex-end;
   align-items: center;
   height: 60px;
+  max-height: 9vh;
   border-bottom: var(--border1);
   background-color: var(--background-color1);
   z-index: 100;
