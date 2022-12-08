@@ -21,29 +21,37 @@ export default function TaskProgressBar(props: IProp) {
   );
 
   useEffect(() => {
-    if (isSingleBoardPageOpen && userCurrentBoard.columns !== undefined) {
+    if (isSingleBoardPageOpen) {
       setTimeout(() => {
-        const doneTasks = userCurrentBoard.columns
-          .filter(
-            (column) =>
-              column.title ===
-              localeEN.columnContet.DEFAULT_DONE_COLUMN.filter(
-                (title) => title === column.title
-              ).at(-1)
-          )
-          .map((column) => column.tasks.length)
-          .reduce((sum, num) => sum + num, 0);
+        const doneTasks = userCurrentBoard.columns.every(
+          (column) => typeof column.tasks !== 'undefined'
+        )
+          ? userCurrentBoard.columns
+              .filter(
+                (column) =>
+                  column.title ===
+                  localeEN.columnContet.DEFAULT_DONE_COLUMN.filter(
+                    (title) => title === column.title
+                  ).at(-1)
+              )
+              .map((column) => column.tasks.length)
+              .reduce((sum, num) => sum + num, 0)
+          : 0;
 
-        const tasksAll = userCurrentBoard.columns
-          .filter(
-            (column) =>
-              column.title !==
-              localeEN.columnContet.DEFAULT_DONE_COLUMN.filter(
-                (title) => title === column.title
-              ).at(-1)
-          )
-          .map((column) => column.tasks.length)
-          .reduce((sum, num) => sum + num, 0);
+        const tasksAll = userCurrentBoard.columns.every(
+          (column) => typeof column.tasks !== 'undefined'
+        )
+          ? userCurrentBoard.columns
+              .filter(
+                (column) =>
+                  column.title !==
+                  localeEN.columnContet.DEFAULT_DONE_COLUMN.filter(
+                    (title) => title === column.title
+                  ).at(-1)
+              )
+              .map((column) => column.tasks.length)
+              .reduce((sum, num) => sum + num, 0)
+          : 0;
 
         setUncompleteTasks(tasksAll + doneTasks!);
         setDoneTasks(doneTasks!);
