@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { localeEN } from '../../locales/localeEN';
 import { useAppSelector } from '../../redux/hooks';
 import './taskProgressBar.css';
+
 interface IProp {
   boardId?: string;
 }
+
 export default function TaskProgressBar(props: IProp) {
   const userCurrentBoard = useAppSelector((state) => state.columnsSlice.userCurrentBoard);
   const { languageIndex, themeIndex } = useAppSelector((state) => state.settingsSlice);
@@ -60,12 +62,6 @@ export default function TaskProgressBar(props: IProp) {
   }, [isSingleBoardPageOpen, userCurrentBoard.columns]);
 
   useEffect(() => {
-    doneTasks === 0 && uncompleteTasks === 0 ? setVisible('hidden') : setVisible('visible');
-    const progressBarWidth = parseInt(window.getComputedStyle(progressBar.current!).width);
-    setStep(progressBarWidth / uncompleteTasks);
-  }, [doneTasks, step, uncompleteTasks]);
-
-  useEffect(() => {
     if (isBoardPageOpen) {
       const donedTasks = userCurrentBoardListForTaskProgressBar!
         .filter((board) => board.id === props.boardId)
@@ -97,6 +93,21 @@ export default function TaskProgressBar(props: IProp) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBoardPageOpen]);
+
+  const resizeBar = useCallback(() => {
+    doneTasks === 0 && uncompleteTasks === 0 ? setVisible('hidden') : setVisible('visible');
+    const progressBarWidth = parseInt(window.getComputedStyle(progressBar.current!).width);
+    setStep(progressBarWidth / uncompleteTasks);
+  }, [doneTasks, uncompleteTasks]);
+
+  useEffect(() => {
+    resizeBar();
+    window.addEventListener('resize', resizeBar);
+
+    return () => {
+      window.removeEventListener('resize', resizeBar);
+    };
+  }, [resizeBar]);
 
   return (
     <div className="progress-block">

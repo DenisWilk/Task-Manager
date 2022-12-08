@@ -50,10 +50,7 @@ export const DoneTaskSVG = () => {
   const { languageIndex } = useAppSelector((state) => state.settingsSlice);
 
   return (
-    <svg
-      className="svg-icon"
-      viewBox="0 0 924 924"
-    >
+    <svg className="svg-icon" viewBox="0 0 924 924">
       <title>{localeEN.tooltips.MARK_AS_DONE[languageIndex]}</title>
       <path d="M445.44 744.96l439.04-434.56c12.8-12.8 12.8-33.28 0-45.44-12.8-12.8-33.28-12.8-46.08 0l-425.6 421.12L184.96 457.6c-12.8-12.8-33.92-12.8-46.72 0-12.8 12.8-12.8 33.92 0 46.72l240 240C400 766.08 422.4 767.36 445.44 744.96z" />
     </svg>
