@@ -8,6 +8,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import { useAppSelector } from '../../redux/hooks';
 import { Endpoints } from '../../endpoints/endpoints';
 import { localeEN } from '../../locales/localeEN';
+import { ButtonShowTask } from '../../UI/task-buttons/ButtonShowTask';
 
 interface IProp {
   task: ITask;
@@ -79,6 +80,7 @@ export const Task = (props: IProp) => {
             <ButtonDoneTask id={id} task={props.task} column={props.column} />
             <ButtonEditTask id={id} column={props.column} />
             <ButtonDeleteTask id={id} column={props.column} />
+            <ButtonShowTask id={id} column={props.column} />
 
             <button
               className="upload-file-task"
