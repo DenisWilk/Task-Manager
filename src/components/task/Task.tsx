@@ -79,9 +79,6 @@ export const Task = (props: IProp) => {
           <div className="task_button-block">
             <ButtonDoneTask id={id} task={props.task} column={props.column} />
             <ButtonEditTask id={id} column={props.column} />
-            <ButtonDeleteTask id={id} column={props.column} />
-            <ButtonShowTask id={id} column={props.column} />
-
             <button
               className="upload-file-task"
               onClick={handleLoadFile}
@@ -99,6 +96,8 @@ export const Task = (props: IProp) => {
               accept="image/*"
             />
             <span className="task__counter-files">{fileCounter}</span>
+            <ButtonShowTask id={id} column={props.column} />
+            <ButtonDeleteTask id={id} column={props.column} />
           </div>
         </div>
       )}
