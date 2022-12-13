@@ -1,0 +1,29 @@
+.task-data-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: auto;
+}
+.task-data__description {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+}
+.edit-checkbox__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 50px;
+  height: 1em;
+}
+.task-data__edit-checkbox-label {
+  margin-top: -2px;
+  font-weight: 600;
+  font-size: 1em;
+}
+.task-data__edit-checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px 0 10px
+}
