@@ -1,8 +1,8 @@
 import React from 'react';
 import { localeEN } from '../../locales/localeEN';
-import { setCurrentColumnId, setEditedTaskId } from '../../redux/columns-slice/columnsSlice';
+import { setCurrentColumnId, setCurrentTaskId } from '../../redux/columns-slice/columnsSlice';
 import { useAppDispatch } from '../../redux/hooks';
-import { setIsEditTask, setModalOpen } from '../../redux/modal-slice/modalSlice';
+import { setIsEditTask, setIsShowTask, setModalOpen } from '../../redux/modal-slice/modalSlice';
 import { IComleteColumn } from '../../types/types';
 import { EditTaskSVG } from './svgButtons';
 import './task-buttons.css';
@@ -16,8 +16,9 @@ export const ButtonEditTask = (props: IProp) => {
   const dispatch = useAppDispatch();
   const goToModalWindow = (e: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(setIsEditTask(true));
+    dispatch(setIsShowTask(false));
     dispatch(setModalOpen(true));
-    dispatch(setEditedTaskId(e.currentTarget.id));
+    dispatch(setCurrentTaskId(e.currentTarget.id));
     dispatch(setCurrentColumnId(props.column.id));
   };
   return (
