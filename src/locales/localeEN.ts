@@ -97,6 +97,12 @@ export const localeEN = {
       'Создать новую задачу',
     ],
     EDIT_TASK_MESSAGE: ['Edit task', 'Створити завдання', 'Стварыце задачу', 'Создать задачу'],
+    SELECTED_TASK_MESSAGE: [
+      'Selected task',
+      'Вибране завдання',
+      'Абраная задача',
+      'Выбранная задача',
+    ],
     CHANGE_TASK_CHECKBOX_LABEL: [
       'Edit task: ',
       'Змінити завдання: ',
