@@ -58,7 +58,7 @@ export const modalSlice = createSlice({
       state.isDeleteUser = action.payload;
     },
     setIsShowTask(state, action: PayloadAction<boolean>) {
-      state.isEditTask = action.payload;
+      state.isShowTask = action.payload;
     },
   },
 });
