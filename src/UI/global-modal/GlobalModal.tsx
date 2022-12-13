@@ -30,6 +30,7 @@ export const GlobalModal = (props: Props) => {
     isCreateBoard,
     isEditTask,
     isDeleteUser,
+    isShowTask,
   } = useAppSelector((state) => state.modalSlice);
   const modalSliceState = useAppSelector((state) => state.modalSlice);
 
@@ -48,7 +49,9 @@ export const GlobalModal = (props: Props) => {
     ? localeEN.modalContetntMessage.REMOVE_TASK_CONFIRM_MESSAGE[languageIndex]
     : isDeleteUser
     ? localeEN.modalContetntMessage.DELETE_USER_CONFIRM_MESSAGE[languageIndex]
-    : localeEN.modalContetntMessage.EDIT_TASK_MESSAGE[languageIndex];
+    : isEditTask
+    ? localeEN.modalContetntMessage.EDIT_TASK_MESSAGE[languageIndex]
+    : localeEN.modalContetntMessage.SELECTED_TASK_MESSAGE[languageIndex];
 
   const state = useAppSelector((store) => store.settingsSlice);
   const dispatch = useAppDispatch();
@@ -83,6 +86,7 @@ export const GlobalModal = (props: Props) => {
         {isCreateColumn && props.component}
         {isCreateTask && props.component}
         {isEditTask && props.component}
+        {isShowTask && props.component}
         {isRemoveBoard && <ConfirmButton />}
         {isRemoveColumn && <ConfirmButton />}
         {isRemoveTask && <ConfirmButton />}
