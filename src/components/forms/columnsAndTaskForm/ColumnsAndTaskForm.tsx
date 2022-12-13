@@ -27,11 +27,11 @@ export default function ColumnsAndTaskForm() {
   const token = useAppSelector((state) => state.userSlice.token);
   const currentBoardId = useAppSelector((state) => state.boardsSlice.currentBoardId);
   const currentColumnId = useAppSelector((state) => state.columnsSlice.currentColumnId);
-  const editedTaskId = useAppSelector((state) => state.columnsSlice.editedTaskId);
+  const currentTaskId = useAppSelector((state) => state.columnsSlice.currentTaskId);
   const isCreateTask = useAppSelector((state) => state.modalSlice.isCreateTask);
   const isCreateColumn = useAppSelector((state) => state.modalSlice.isCreateColumn);
   const isEditTask = useAppSelector((state) => state.modalSlice.isEditTask);
-  const editedTaskData = useAppSelector((state) => state.columnsSlice.editedTaskData);
+  const currentTaskData = useAppSelector((state) => state.columnsSlice.currentTaskData);
   const [isCompare, setIsCompare] = useState<boolean>(false);
   const languageIndex = useAppSelector((state) => state.settingsSlice.languageIndex);
   const state = useAppSelector((store) => store.settingsSlice);
@@ -44,8 +44,8 @@ export default function ColumnsAndTaskForm() {
   } = useForm<IUserBoard>({
     mode: 'onBlur',
     defaultValues: {
-      title: isEditTask ? editedTaskData.title : '',
-      description: isEditTask ? editedTaskData.description : '',
+      title: isEditTask ? currentTaskData.title : '',
+      description: isEditTask ? currentTaskData.description : '',
     },
   });
 
@@ -65,10 +65,10 @@ export default function ColumnsAndTaskForm() {
           token,
         }
       : {
-          taskData: { ...formData, userId: currentUser.userId, order: editedTaskData.order },
+          taskData: { ...formData, userId: currentUser.userId, order: currentTaskData.order },
           boardId: currentBoardId,
           columnId: currentColumnId,
-          taskId: editedTaskId,
+          taskId: currentTaskId,
           token,
         };
     isCreateColumn && dispatch(fetchAddNewUserColumns(dataForFetch));
