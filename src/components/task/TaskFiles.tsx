@@ -6,7 +6,7 @@ import { Endpoints } from '../../endpoints/endpoints';
 import { IFiles, ITask } from '../../types/types';
 
 export const TaskFiles = () => {
-  const { editedTaskId, userCurrentBoard, currentColumnId } = useAppSelector(
+  const { currentTaskId, userCurrentBoard, currentColumnId } = useAppSelector(
     (state) => state.columnsSlice
   );
   const { token } = useAppSelector((state) => state.userSlice);
@@ -14,7 +14,7 @@ export const TaskFiles = () => {
 
   const getFiles = async () => {
     const response: Response = await fetch(
-      `${Endpoints.BOARDS}/${userCurrentBoard.id}/columns/${currentColumnId}/tasks/${editedTaskId}`,
+      `${Endpoints.BOARDS}/${userCurrentBoard.id}/columns/${currentColumnId}/tasks/${currentTaskId}`,
       {
         method: 'GET',
         headers: {
@@ -48,8 +48,8 @@ export const TaskFiles = () => {
           <div className="task-files-content">
             {filesArray.map((file, index) => (
               <TaskFilesRow
-                key={editedTaskId + index}
-                taskId={editedTaskId}
+                key={currentTaskId + index}
+                taskId={currentTaskId}
                 fileName={file.filename}
                 fileSize={file.fileSize}
               />
