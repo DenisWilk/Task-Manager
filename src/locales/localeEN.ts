@@ -97,6 +97,12 @@ export const localeEN = {
       'Создать новую задачу',
     ],
     EDIT_TASK_MESSAGE: ['Edit task', 'Створити завдання', 'Стварыце задачу', 'Создать задачу'],
+    CHANGE_TASK_CHECKBOX_LABEL: [
+      'Edit task: ',
+      'Змінити завдання: ',
+      'Змяніць задачу: ',
+      'Изменить задачу: ',
+    ],
     DELETE_USER_CONFIRM_MESSAGE: [
       'Delete user',
       'Видалити користувача',
@@ -115,6 +121,7 @@ export const localeEN = {
     DELETE_COLUMN: ['delete column', 'видалити стовпець', 'выдаліць', 'удалить колонку'],
     ADD_TASK: ['add task', 'додати справу', 'дадаць задачу', 'добавить задачу'],
     UPLOAD_FILE: ['upload file', 'завантвжити файл', 'загрузіць файл', 'загрузить файл'],
+    SHOW_TASK: ['show', 'показати завдання', 'паказаць задачу', 'показать задачу'],
   },
   placeholderText: {
     TASK_DESCRIPTION: ['Description', 'Опис', 'Апісанне', 'Описание'],
