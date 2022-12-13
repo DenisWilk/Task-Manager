@@ -73,7 +73,7 @@ export const ShowTaskSVG = () => {
       enableBackground="new 0 0 32 32"
       xmlSpace="preserve"
     >
-      <title>{localeEN.tooltips.MARK_AS_DONE[languageIndex]}</title>
+      <title>{localeEN.tooltips.SHOW_TASK[languageIndex]}</title>
       <g id="eye">
         <path
           fill="#333333"

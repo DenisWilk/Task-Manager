@@ -1,14 +1,14 @@
 .button-edit-task,
-.button-done-task {
+.button-done-task,
+.button-show-task {
   width: 22px;
   height: 22px;
   background-color: initial;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  margin: 0 3px 0 3px;
+  margin: 0 4px 0 4px;
 }
-
 .button-done-task {
   width: 30px;
   height: 30px;
@@ -47,4 +47,14 @@
 .button-edit-task:disabled .svg-icon path,
 .button-done-task:disabled .svg-icon path {
   fill: rgba(39, 34, 34, 0.473);
+}
+.button-show-task .svg-icon {
+  overflow: hidden;
+  height: 85%;
+  width: 85%;
+}
+.button-show-task .svg-icon path {
+  fill: mediumblue;
+  height: 90%;
+  width: 90%;
 }
