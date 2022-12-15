@@ -71,15 +71,18 @@ export const GlobalModal = (props: Props) => {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalSliceState]);
 
+  const currentClassName =
+    isModalOpen && isShowTask
+      ? 'modal__content_show-task ' + state.themeIndex
+      : isModalOpen
+      ? 'active modal__content ' + state.themeIndex
+      : 'modal__content';
   return (
     <div
       className={isModalOpen ? 'active modal ' + state.themeIndex : 'modal'}
       onClick={closeModalWindow}
     >
-      <div
-        className={isModalOpen ? 'active modal__content ' + state.themeIndex : 'modal__content'}
-        onClick={(event): void => event.stopPropagation()}
-      >
+      <div className={currentClassName} onClick={(event): void => event.stopPropagation()}>
         <CloseModalButton />
         <h3 className={'modal-title ' + state.themeIndex}>{currentModalTitle}</h3>
         {isCreateBoard && props.component}
