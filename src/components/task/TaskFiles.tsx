@@ -39,7 +39,7 @@ export const TaskFiles = () => {
     <>
       {filesArray.length ? (
         <article className="task-files-wrapper">
-          <h3 className="task-files__title">Uploaded files</h3>
+          <h4 className="task-files__title">Uploaded files</h4>
           <div className="task-files-item title">
             <span className="file-name">name</span>
             <span className="file-size">size</span>
