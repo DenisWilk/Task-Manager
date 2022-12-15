@@ -11,6 +11,7 @@
   backdrop-filter: blur(1px);
   pointer-events: none;
   z-index: 999;
+  overflow: hidden;
 }
 
 .modal.dark {
@@ -33,11 +34,26 @@
   align-items: center;
   gap: 25px;
   width: 70%;
-  max-height: 70%;
+  max-height: 95%;
   margin: auto;
   padding: 30px 20px;
   background-color: var(--background-color4);
-  border-radius: 8px;
+  border-radius: 5px;
+  overflow-y: auto;
+}
+.modal__content_show-task {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 80%;
+  max-height: 98%;
+  margin: auto;
+  padding: 10px 10px;
+  background-color: var(--background-color4);
+  border-radius: 5px;
+  overflow-y: auto;
 }
 
 .modal__content.dark {
