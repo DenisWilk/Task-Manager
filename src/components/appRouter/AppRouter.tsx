@@ -11,6 +11,7 @@ import LogOut from '../log-out/LogOut';
 import AuthRequire from '../../hoc/AuthRequire';
 import { EditProfilePage } from '../../pages/edit-profile/EditProfile';
 import NotAuthRequire from '../../hoc/NotAuthRequire';
+import ShowFilePage from '../../pages/show-file-page/ShowFilePage';
 
 export default function AppRouter() {
   return (
@@ -30,6 +31,14 @@ export default function AppRouter() {
           element={
             <AuthRequire>
               <SingleBoard />
+            </AuthRequire>
+          }
+        />
+        <Route
+          path="boards/:user/:boardId/:taskId/:fileName"
+          element={
+            <AuthRequire>
+              <ShowFilePage />
             </AuthRequire>
           }
         />
