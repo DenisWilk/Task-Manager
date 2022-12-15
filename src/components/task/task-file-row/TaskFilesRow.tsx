@@ -32,11 +32,14 @@ export const TaskFilesRow = (props: Props) => {
     getFile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const currentFileSize =
+    String(fileSize).length >= 7
+      ? `${(fileSize / 1000000).toFixed(2)} mb`
+      : `${(fileSize / 1000).toFixed(2)} kb`;
   return (
     <div className="task-files-item">
       <span className="file-name">{fileName}</span>
-      <span className="file-size">{fileSize}</span>
+      <span className="file-size">{currentFileSize}</span>
       <span className="file-preview">
         {taskFiles && (
           <img
