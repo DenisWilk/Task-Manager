@@ -20,7 +20,6 @@ import ButtonSuccess from '../../../UI/button-success/ButtonSuccess';
 import './columnsAndTasksForm.css';
 import { localeEN } from '../../../locales/localeEN';
 import { languages } from '../../../locales/languages';
-import { TaskFiles } from '../../task/TaskFiles';
 
 export default function ColumnsAndTaskForm() {
   const dispatch = useAppDispatch();
@@ -126,7 +125,6 @@ export default function ColumnsAndTaskForm() {
           placeholder={localeEN.placeholderText.TASK_DESCRIPTION[state.languageIndex]}
           className="columns-and-task-form__description-input"
         />
-        {isEditTask && <TaskFiles />}
         <ButtonSuccess isValid={isValid} isCompare={isCompare} />
       </form>
     </section>
