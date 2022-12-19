@@ -16,6 +16,11 @@ export interface IUserBoard {
   description?: string;
 }
 
+export interface ITaskDescriptionData {
+  description: string;
+  createTask?: string;
+  doneTask?: string;
+}
 export interface IUserTask {
   userId: string;
   title?: string;
