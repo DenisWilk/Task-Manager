@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 780px) {
   .progress-block {
-    width: 50%;
+    width: 95%;
     align-items: flex-end;
     flex-wrap: nowrap;
   }
