@@ -129,6 +129,11 @@ export const localeEN = {
     UPLOAD_FILE: ['upload file', 'завантвжити файл', 'загрузіць файл', 'загрузить файл'],
     SHOW_TASK: ['show', 'показати завдання', 'паказаць задачу', 'показать задачу'],
   },
+  showTaskDataContetnt: {
+    CREATE_TASK_LABEL: ['Task created', 'Завдання створено', 'Задача створана', 'Задача создана'],
+    DONE_TASK_LABEL: ['Performed', 'Виконано', 'Выканана', 'Выполнено'],
+    UNCOMPLEATE_TASK_MESSAGE: ['In work', 'В роботі', 'У працы', 'В работе'],
+  },
   placeholderText: {
     TASK_DESCRIPTION: ['Description', 'Опис', 'Апісанне', 'Описание'],
     TITLE_TASK_DESCRIPTION: ['Title', 'Назва', 'Назва', 'Название'],
