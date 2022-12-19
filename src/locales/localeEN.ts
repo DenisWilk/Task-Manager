@@ -131,7 +131,7 @@ export const localeEN = {
   },
   showTaskDataContetnt: {
     CREATE_TASK_LABEL: ['Task created', 'Завдання створено', 'Задача створана', 'Задача создана'],
-    DONE_TASK_LABEL: ['Performed', 'Виконано', 'Выканана', 'Выполнено'],
+    DONE_TASK_LABEL: ['Completed', 'Завершено', 'Завершана', 'Завершено'],
     UNCOMPLEATE_TASK_MESSAGE: ['In work', 'В роботі', 'У працы', 'В работе'],
   },
   placeholderText: {
