@@ -11,6 +11,7 @@ export type InitState = {
   isEditTask: boolean;
   isShowTask: boolean;
   isDeleteUser: boolean;
+  isDoneTask: boolean;
 };
 
 const initState: InitState = {
@@ -24,6 +25,7 @@ const initState: InitState = {
   isEditTask: false,
   isShowTask: false,
   isDeleteUser: false,
+  isDoneTask: false,
 };
 
 export const modalSlice = createSlice({
@@ -60,6 +62,9 @@ export const modalSlice = createSlice({
     setIsShowTask(state, action: PayloadAction<boolean>) {
       state.isShowTask = action.payload;
     },
+    setIsDoneTask(state, action: PayloadAction<boolean>) {
+      state.isDoneTask = action.payload;
+    },
   },
 });
 
@@ -75,4 +80,5 @@ export const {
   setIsEditTask,
   setDeleteUser,
   setIsShowTask,
+  setIsDoneTask,
 } = modalSlice.actions;
