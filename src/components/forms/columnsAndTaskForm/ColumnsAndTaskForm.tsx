@@ -20,6 +20,11 @@ import ButtonSuccess from '../../../UI/button-success/ButtonSuccess';
 import './columnsAndTasksForm.css';
 import { localeEN } from '../../../locales/localeEN';
 import { languages } from '../../../locales/languages';
+import {
+  changeTaskDescriptionHandler,
+  parseTaskDescriptionHandler,
+  whenTaskWasCreatedHandler,
+} from '../../../redux/taskDataCreator/taskDataCreatorAction';
 
 export default function ColumnsAndTaskForm() {
   const dispatch = useAppDispatch();
@@ -44,7 +49,7 @@ export default function ColumnsAndTaskForm() {
     mode: 'onBlur',
     defaultValues: {
       title: isEditTask ? currentTaskData.title : '',
-      description: isEditTask ? currentTaskData.description : '',
+      description: isEditTask ? parseTaskDescriptionHandler(currentTaskData) : '',
     },
   });
 
@@ -58,13 +63,22 @@ export default function ColumnsAndTaskForm() {
         }
       : isCreateTask
       ? {
-          taskData: { ...formData, userId: currentUser.userId },
+          taskData: {
+            ...formData,
+            description: whenTaskWasCreatedHandler(formData, isCreateTask, currentTaskData),
+            userId: currentUser.userId,
+          },
           boardId: currentBoardId,
           columnId: currentColumnId,
           token,
         }
       : {
-          taskData: { ...formData, userId: currentUser.userId, order: currentTaskData.order },
+          taskData: {
+            ...formData,
+            description: changeTaskDescriptionHandler(formData, currentTaskData),
+            userId: currentUser.userId,
+            order: currentTaskData.order,
+          },
           boardId: currentBoardId,
           columnId: currentColumnId,
           taskId: currentTaskId,
