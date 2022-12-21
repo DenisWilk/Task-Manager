@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { localeEN } from '../../locales/localeEN';
 import ConfirmButton from '../modal-confirm-button/ConfirmButton';
 import CloseModalButton from '../close-modal-button/CloseModalButton';
@@ -35,6 +35,8 @@ export const GlobalModal = (props: Props) => {
   const modalSliceState = useAppSelector((state) => state.modalSlice);
 
   const { languageIndex } = useAppSelector((state) => state.settingsSlice);
+  const currentColumnTtile = useAppSelector((state) => state.columnsSlice.currentColumnTitle);
+  const [isShowDoneTask, setIsShowDoneTask] = useState<boolean>(false);
   const currentModalTitle = isCreateBoard
     ? localeEN.modalContetntMessage.CREATE_NEW_BOARD_MESSAGE[languageIndex]
     : isCreateColumn
@@ -51,6 +53,8 @@ export const GlobalModal = (props: Props) => {
     ? localeEN.modalContetntMessage.DELETE_USER_CONFIRM_MESSAGE[languageIndex]
     : isEditTask
     ? localeEN.modalContetntMessage.EDIT_TASK_MESSAGE[languageIndex]
+    : isShowDoneTask
+    ? localeEN.modalContetntMessage.SHOW_DONE_TASK_MESSAGE[languageIndex]
     : localeEN.modalContetntMessage.SELECTED_TASK_MESSAGE[languageIndex];
 
   const state = useAppSelector((store) => store.settingsSlice);
@@ -71,12 +75,18 @@ export const GlobalModal = (props: Props) => {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalSliceState]);
 
+  useEffect(() => {
+    setIsShowDoneTask(
+      localeEN.columnContet.DEFAULT_DONE_COLUMN.some((lang) => lang === currentColumnTtile)
+    );
+  }, [currentColumnTtile]);
+
   const currentClassName =
     isModalOpen && isShowTask
       ? 'modal__content_show-task ' + state.themeIndex
       : isModalOpen
       ? 'active modal__content ' + state.themeIndex
-      : 'modal__content';
+      : 'modal__content ';
   return (
     <div
       className={isModalOpen ? 'active modal ' + state.themeIndex : 'modal'}
