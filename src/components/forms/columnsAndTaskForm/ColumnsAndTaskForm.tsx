@@ -64,7 +64,7 @@ export default function ColumnsAndTaskForm() {
       : isCreateTask
       ? {
           taskData: {
-            ...formData,
+            title: formData.title,
             description: whenTaskWasCreatedHandler(formData, isCreateTask, currentTaskData),
             userId: currentUser.userId,
           },
@@ -74,7 +74,7 @@ export default function ColumnsAndTaskForm() {
         }
       : {
           taskData: {
-            ...formData,
+            title: formData.title,
             description: changeTaskDescriptionHandler(formData, currentTaskData),
             userId: currentUser.userId,
             order: currentTaskData.order,
@@ -139,8 +139,42 @@ export default function ColumnsAndTaskForm() {
           placeholder={localeEN.placeholderText.TASK_DESCRIPTION[state.languageIndex]}
           className="columns-and-task-form__description-input"
         />
+        <section className="task-priority-select__container">
+          <label className={'task-priority-label ' + state.themeIndex} htmlFor="taskPriority">
+            {localeEN.taskPriorityLabel[languageIndex]}
+          </label>
+          <select
+            {...register('taskPriority', {
+              disabled: !isCreateTask && !isEditTask,
+            })}
+            id="taskPriority"
+            name="taskPriority"
+            defaultValue=""
+            className={'task-priority-select__selector ' + state.themeIndex}
+          >
+            <option className="priority-option" disabled value="">
+              {localeEN.taskPriorityDefaultOption[languageIndex]}
+            </option>
+            {taskPriority.map((priorityItem) => (
+              <option
+                style={{ color: `${priorityItem.color}` }}
+                key={priorityItem.index}
+                className="priority-option"
+                value={JSON.stringify(priorityItem)}
+              >
+                {localeEN.priority[languageIndex][Number(priorityItem.index)]}
+              </option>
+            ))}
+          </select>
+        </section>
+
         <ButtonSuccess isValid={isValid} isCompare={isCompare} />
       </form>
     </section>
   );
 }
+const taskPriority = [
+  { color: 'red', index: '0' },
+  { color: 'orange', index: '1' },
+  { color: 'yellow', index: '2' },
+];

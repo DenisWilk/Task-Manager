@@ -30,3 +30,37 @@ textarea.create-board-form__description-input {
     height: 100px;
     border-radius: 3px;
 }
+
+.task-priority-select__container {
+  width: 75%;
+  height: 24px;
+}
+
+.task-priority-select__selector {
+  width: auto;
+  min-width: 100px;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--color1);
+}
+.task-priority-select__selector.dark {
+  color: var(--color2);
+}
+.task-priority-select__selector.color {
+  color: var(--color3);
+}
+
+.task-priority-label {
+  font-size: 1em;
+  color: var(--color1);
+}
+
+.task-priority-label.dark {
+  color: var(--color2);
+}
+.task-priority-label.color {
+  color: var(--color3);
+}
