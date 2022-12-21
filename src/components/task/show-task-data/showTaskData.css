@@ -10,11 +10,14 @@
   background-color: rgba(39, 34, 34, 0.377);
 }
 .task-data-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
   height: auto;
+  border-radius: 2px;
+  padding: 3px;
 }
 .task-data__title {
   width: 100%;
@@ -48,4 +51,18 @@
 }
 .task-data__edit-checkbox:hover {
  cursor: pointer;
+}
+.task-priority-modal__container{
+  position: absolute;
+  top: -2px;
+  right: -1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80px;
+  max-width: 100px;
+  height: 20px;
+  border-radius: 3px;
+  background-color: inherit;
+  padding: 2px;
 }
