@@ -174,7 +174,7 @@ export default function ColumnsAndTaskForm() {
   );
 }
 const taskPriority = [
-  { color: 'red', index: '0' },
-  { color: 'orange', index: '1' },
-  { color: 'yellow', index: '2' },
+  { color: '#8B0000', index: '0' },
+  { color: '#FF8C00', index: '1' },
+  { color: '#FFD700', index: '2' },
 ];
