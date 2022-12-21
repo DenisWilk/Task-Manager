@@ -10,7 +10,6 @@ import { Endpoints } from '../../endpoints/endpoints';
 import { localeEN } from '../../locales/localeEN';
 import { ButtonShowTask } from '../../UI/task-buttons/ButtonShowTask';
 import { setIsDoneTask } from '../../redux/modal-slice/modalSlice';
-import Spinner from '../../UI/spinner/Spinner';
 
 interface IProp {
   task: ITask;
@@ -26,6 +25,8 @@ export const Task = (props: IProp) => {
   const [fileCounter, setFileCounter] = useState<number | undefined>(0);
   const { languageIndex } = useAppSelector((state) => state.settingsSlice);
   const [currentTaskDescription, setCurrentTaskDescription] = useState<ITaskDescriptionData>();
+  const [taskPriorityColor, setTaskPriorityColor] = useState<string>();
+  const [taskPriority, setTaskPriority] = useState<string>();
 
   const handleFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
     await handleFetch(event.currentTarget.files![0]);
@@ -68,7 +69,14 @@ export const Task = (props: IProp) => {
   }, [dispatch, props.column.title]);
 
   useEffect(() => {
-    setCurrentTaskDescription(JSON.parse(description));
+    const parsedDescription: ITaskDescriptionData = JSON.parse(description);
+    setCurrentTaskDescription(parsedDescription);
+    typeof parsedDescription !== 'undefined'
+      ? setTaskPriorityColor(parsedDescription.taskPriority!.color)
+      : setTaskPriorityColor('initial');
+    typeof parsedDescription !== 'undefined'
+      ? setTaskPriority(parsedDescription.taskPriority!.index!)
+      : setTaskPriority('');
   }, [description]);
 
   return (
@@ -117,6 +125,16 @@ export const Task = (props: IProp) => {
             <ButtonShowTask id={id} column={props.column} />
             <ButtonDeleteTask id={id} column={props.column} />
           </div>
+          {typeof taskPriority !== 'undefined' ? (
+            <div
+              className="task-priority_container"
+              style={{ border: `1.5px solid ${taskPriorityColor}` }}
+            >
+              <p className="task-priority" style={{ color: `${taskPriorityColor}` }}>
+                {localeEN.priority[languageIndex][Number(taskPriority)]}
+              </p>
+            </div>
+          ) : null}
         </div>
       )}
     </Draggable>
