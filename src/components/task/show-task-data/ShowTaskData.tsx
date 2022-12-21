@@ -14,17 +14,26 @@ export default function ShowTaskData() {
   const isShowTask = useAppSelector((state) => state.modalSlice.isShowTask);
   const [currentTaskDescription, setCurrentTaskDescription] = useState<ITaskDescriptionData>();
   const isDoneTask = useAppSelector((state) => state.modalSlice.isDoneTask);
+  const [taskPriorityColor, setTaskPriorityColor] = useState<string>();
+  const [taskPriority, setTaskPriority] = useState<string>();
+
   const dispatch = useAppDispatch();
   const letEditTask = () => {
     dispatch(setIsEditTask(true));
     dispatch(setIsShowTask(false));
   };
   useEffect(() => {
-    setCurrentTaskDescription(JSON.parse(currentTaskData.description));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const parsedDescription: ITaskDescriptionData = JSON.parse(currentTaskData.description);
+    setCurrentTaskDescription(parsedDescription);
+    typeof parsedDescription !== 'undefined'
+      ? setTaskPriorityColor(parsedDescription.taskPriority!.color)
+      : setTaskPriorityColor('initial');
+    typeof parsedDescription !== 'undefined'
+      ? setTaskPriority(parsedDescription.taskPriority!.index!)
+      : setTaskPriority('');
+  }, [currentTaskData]);
   return (
-    <section className="task-data-container">
+    <section className="task-data-container" style={{ outline: `2px solid ${taskPriorityColor}` }}>
       <h4 className="task-data__create-task-date-title">
         {localeEN.showTaskDataContetnt.CREATE_TASK_LABEL[languageIndex] + ': '}
         {currentTaskDescription ? currentTaskDescription!.createTask : 0}
@@ -56,6 +65,16 @@ export default function ShowTaskData() {
           onClick={letEditTask}
         />
       </div>
+      {typeof taskPriority !== 'undefined' ? (
+        <div
+          className="task-priority-modal__container"
+          style={{ border: `1.5px solid ${taskPriorityColor}` }}
+        >
+          <p className="task-priority" style={{ color: `${taskPriorityColor}` }}>
+            {localeEN.priority[languageIndex][Number(taskPriority)]}
+          </p>
+        </div>
+      ) : null}
     </section>
   );
 }
