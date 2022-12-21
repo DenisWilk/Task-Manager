@@ -8,10 +8,17 @@ export const whenTaskWasCreatedHandler = (
     typeof currentTaskData.description === 'string' && currentTaskData.description !== ''
       ? JSON.parse(currentTaskData.description)
       : null;
+
+  const taskPriority =
+    formData.taskPriority! === ''
+      ? { priority: '', color: '' }
+      : JSON.parse(formData.taskPriority!);
   const taskDescriptionData: ITaskDescriptionData = {
     description: formData.description! ? formData.description : currentTaskDescription.description,
     createTask: isCreateTask ? getTaskCreateDate() : currentTaskDescription.createTask,
+    taskPriority,
   };
+
   return JSON.stringify(taskDescriptionData);
 };
 
@@ -33,9 +40,16 @@ export const changeTaskDescriptionHandler = (
     typeof currentTaskData.description === 'string'
       ? JSON.parse(currentTaskData.description)
       : null;
+
+  const taskPriority =
+    formData.taskPriority! === ''
+      ? { priority: '', color: '' }
+      : JSON.parse(formData.taskPriority!);
+
   const taskDescriptionData: ITaskDescriptionData = {
     ...currentTaskDescription,
     description: formData.description!,
+    taskPriority,
   };
   return JSON.stringify(taskDescriptionData);
 };
