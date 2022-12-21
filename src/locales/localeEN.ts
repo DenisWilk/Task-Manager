@@ -103,6 +103,12 @@ export const localeEN = {
       'Абраная задача',
       'Выбранная задача',
     ],
+    SHOW_DONE_TASK_MESSAGE: [
+      'This task has been completed',
+      'Це завдання виконане',
+      'Гэта заданне выканана',
+      'Это задание выполнено',
+    ],
     CHANGE_TASK_CHECKBOX_LABEL: [
       'Edit task: ',
       'Змінити завдання: ',
@@ -134,6 +140,19 @@ export const localeEN = {
     DONE_TASK_LABEL: ['Completed', 'Завершено', 'Завершана', 'Завершено'],
     UNCOMPLEATE_TASK_MESSAGE: ['In work', 'В роботі', 'У працы', 'В работе'],
   },
+  priority: [
+    ['Hight', 'Medium', 'Low'],
+    ['Високий', 'Средний', 'Низкий'],
+    ['Высокі', 'Сярэдні', 'Нізкі'],
+    ['Высокий', 'Средний', 'Низький'],
+  ],
+  taskPriorityLabel: [
+    'Task Priority: ',
+    'Пріоритет задачі: ',
+    'Прыярытэт задачы: ',
+    'Проритет задачи: ',
+  ],
+  taskPriorityDefaultOption: ['Priority', 'Пріоритет', 'Прыярытэт', 'Проритет'],
   placeholderText: {
     TASK_DESCRIPTION: ['Description', 'Опис', 'Апісанне', 'Описание'],
     TITLE_TASK_DESCRIPTION: ['Title', 'Назва', 'Назва', 'Название'],
