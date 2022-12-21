@@ -47,7 +47,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  width: 80%;
+  width: 90%;
   max-height: 98%;
   margin: auto;
   padding: 10px 10px;
@@ -64,6 +64,15 @@
   background-color: var(--background-color6);
 }
 
+.modal__content_show-task.dark {
+  background-color: var(--background-color5);
+  color: var(--color2);
+}
+
+.modal__content_show-task.color {
+  background-color: var(--background-color6);
+  color: var(--color3);
+}
 .modal-title {
   font-size: 20px;
   color: var(--color1);
