@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { localeEN } from '../../../locales/localeEN';
 import { useAppSelector } from '../../../redux/hooks';
+import { getLocalizationCreateAndDoneTaskDateHandler } from '../../../redux/taskDataCreator/taskDataCreatorAction';
 import { ITaskDescriptionData } from '../../../types/types';
 import EditTaskSwitcher from '../../../UI/edit-task-checkbox/EditTaskSwitcher';
 import Spinner from '../../../UI/spinner/Spinner';
@@ -30,8 +31,15 @@ export default function ShowTaskData() {
   return (
     <section className="task-data-container" style={{ outline: `2px solid ${taskPriorityColor}` }}>
       <h4 className="task-data__create-task-date-title">
-        {localeEN.showTaskDataContetnt.CREATE_TASK_LABEL[languageIndex] + ': '}
-        {currentTaskDescription ? currentTaskDescription!.createTask : 0}
+        {localeEN.showTaskDataContetnt.CREATE_TASK_LABEL[languageIndex]}
+        {currentTaskDescription ? (
+          getLocalizationCreateAndDoneTaskDateHandler(
+            currentTaskDescription.createTask!,
+            languageIndex
+          )
+        ) : (
+          <Spinner />
+        )}
       </h4>
       <h2 className="task-data__title">{currentTaskData.title}</h2>
       <section className="task-data__description-container">
@@ -40,10 +48,13 @@ export default function ShowTaskData() {
         </div>
       </section>
       <h4 className="task-data__create-task-date-title">
-        {localeEN.showTaskDataContetnt.DONE_TASK_LABEL[languageIndex] + ': '}
-        {currentTaskDescription && isDoneTask
-          ? currentTaskDescription!.createTask
-          : localeEN.showTaskDataContetnt.UNCOMPLEATE_TASK_MESSAGE[languageIndex]}
+        {localeEN.showTaskDataContetnt.DONE_TASK_LABEL[languageIndex]}
+        {currentTaskDescription &&
+          isDoneTask &&
+          getLocalizationCreateAndDoneTaskDateHandler(
+            currentTaskDescription!.doneTask!,
+            languageIndex
+          )}
       </h4>
       {isShowTask && <TaskFiles />}
       {localeEN.columnContet.DEFAULT_DONE_COLUMN.some(
