@@ -16,11 +16,16 @@ export interface IUserBoard {
   description?: string;
   taskPriority?: string;
 }
-
+export interface IDate {
+  year: number;
+  month: number;
+  date: number;
+  day: number;
+}
 export interface ITaskDescriptionData {
   description: string;
-  createTask?: string;
-  doneTask?: string;
+  createTask?: IDate;
+  doneTask?: IDate;
   taskPriority?: {
     priority: string;
     color: string;
