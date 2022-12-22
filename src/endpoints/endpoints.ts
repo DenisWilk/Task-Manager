@@ -1,5 +1,5 @@
-const URL = 'https://be-taskmanager.up.railway.app';
-
+// const URL = 'https://be-taskmanager.up.railway.app';
+const URL = ' http://localhost:4000';
 export const Endpoints = {
   ROOT: `${URL}`,
   USERS: `${URL}/users`,

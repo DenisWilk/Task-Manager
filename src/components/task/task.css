@@ -83,6 +83,10 @@
   background-image: url('../../assets/icons/pick-file.png');
   background-size: contain;
 }
+.task__counter-files {
+  font-size: .9em;
+  margin: -15px 4px 0 -5px;
+}
 
 .upload-file-task svg {
   height: 100%;
@@ -91,4 +95,23 @@
 
 .task__description_content {
   overflow: hidden;
+}
+.task-priority_container {
+  position: absolute;
+  bottom:-11px;
+  right: -1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80px;
+  max-width: 100px;
+  height: 20px;
+  border-radius: 3px;
+  background-color: inherit;
+  padding: 2px;
+}
+.task-priority {
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 2px;
 }

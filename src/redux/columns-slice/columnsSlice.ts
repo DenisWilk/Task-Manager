@@ -36,10 +36,11 @@ interface IColumnsSlice {
   currentColumnId: string;
   removedColumnId: string;
   removedTaskId: string;
-  editedTaskId: string;
-  editedTaskData: ITask;
+  currentTaskData: ITask;
   isSingleBoardPageOpen: boolean;
   isBoardPageOpen: boolean;
+  currentTaskId: string;
+  currentColumnTitle: string;
 }
 
 const initialState: IColumnsSlice = {
@@ -58,8 +59,7 @@ const initialState: IColumnsSlice = {
   currentColumnId: '',
   removedColumnId: '',
   removedTaskId: '',
-  editedTaskId: '',
-  editedTaskData: {
+  currentTaskData: {
     id: '',
     title: '',
     order: 1,
@@ -71,6 +71,8 @@ const initialState: IColumnsSlice = {
   },
   isSingleBoardPageOpen: false,
   isBoardPageOpen: true,
+  currentTaskId: '',
+  currentColumnTitle: '',
 };
 export const columnsSlice = createSlice({
   name: 'columns',
@@ -86,9 +88,9 @@ export const columnsSlice = createSlice({
       state.removedTaskId = action.payload;
     },
     setEditedTaskId(state, action: PayloadAction<string>) {
-      state.editedTaskId = action.payload;
+      state.currentTaskId = action.payload;
       const allTasks = state.userCurrentBoard.columns.map((column) => column.tasks).flat();
-      state.editedTaskData = allTasks.find((task) => task.id === state.editedTaskId)!;
+      state.currentTaskData = allTasks.find((task) => task.id === state.currentTaskId)!;
     },
     setColumnsAfterDrag(state, action: PayloadAction<IColumn[]>) {
       state.userCurrentBoard.columns = action.payload;
@@ -97,9 +99,10 @@ export const columnsSlice = createSlice({
       state.userCurrentBoard.id = '';
       state.userCurrentBoard.columns = [];
       state.removedTaskId = '';
-      state.editedTaskId = '';
+      state.currentTaskId = '';
       state.removedColumnId = '';
       state.currentColumnId = '';
+      state.currentColumnTitle = '';
     },
     setTasksAfterDrag(state, action: PayloadAction<ChangeTask>) {
       state.userCurrentBoard.columns.map((column) => {
@@ -196,7 +199,7 @@ export const columnsSlice = createSlice({
         : state.userDoneColumnListByBoardId.push(boardIdAndDoneColumn);
     },
     setFiles(state, action: PayloadAction<IFiles>) {
-      state.editedTaskData.files?.push(action.payload);
+      state.currentTaskData.files?.push(action.payload);
     },
     setNewTasksByColumn(state, action: PayloadAction<{ tasks: ITask[]; columnId: string }>) {
       const [column] = state.userCurrentBoard.columns.filter(
@@ -256,6 +259,14 @@ export const columnsSlice = createSlice({
                 : board.columns,
           };
         });
+    },
+    setCurrentTaskId(state, action: PayloadAction<string>) {
+      state.currentTaskId = action.payload;
+      const allTasks = state.userCurrentBoard.columns.map((column) => column.tasks).flat();
+      state.currentTaskData = allTasks.find((task) => task.id === state.currentTaskId)!;
+    },
+    setCurrentColumnTitle(state, action: PayloadAction<string>) {
+      state.currentColumnTitle = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -485,6 +496,8 @@ export const {
   setIsBoardPageOpen,
   setUserCurrentBoardListForTaskProgressBar,
   setDragableTask,
+  setCurrentTaskId,
+  setCurrentColumnTitle,
 } = columnsSlice.actions;
 export default columnsSlice.reducer;
 

@@ -1,14 +1,28 @@
 .task-files-item {
     display: flex;
     flex: 1 0 100%;
-    justify-content: space-between;
-    padding: 5px;
-}
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    max-height: 50px ;
+    margin: 5px 0 5px 0;
 
+}
+.task-files-item.title {
+  height: 20px;
+  font-size: 1em;
+  font-weight: 600;
+}
 .file-preview {
     display: inline-block;
-    width: 70px;
-    height: 70px;
+    width: 30px;
+    height: 100%;
+}
+.file-preview:hover {
+ transform:scale(1.95);
+ transition: transform 0.5s;
+ cursor: zoom-in;
 }
 
 .default-image {

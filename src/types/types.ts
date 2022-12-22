@@ -14,8 +14,24 @@ export interface IUserBoard {
   id?: string;
   title?: string;
   description?: string;
+  taskPriority?: string;
 }
-
+export interface IDate {
+  year: number;
+  month: number;
+  date: number;
+  day: number;
+}
+export interface ITaskDescriptionData {
+  description: string;
+  createTask?: IDate;
+  doneTask?: IDate;
+  taskPriority?: {
+    priority: string;
+    color: string;
+    index: string;
+  };
+}
 export interface IUserTask {
   userId: string;
   title?: string;

@@ -107,3 +107,17 @@
 .column-item__message.dark {
   color: var(--color2);
 }
+.column-item__task-couner {
+  position: absolute;
+  top:-8px;
+  right: -8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  background-color: var(--background-color4);
+  font-size: 1em;
+  font-weight: 600;
+}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { localeEN } from '../../locales/localeEN';
 import { setCurrentColumnId, setTasksAsDone } from '../../redux/columns-slice/columnsSlice';
 import { fetchMarkTasksAsDone } from '../../redux/columns-slice/tasksFetchRequest';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { whenTaskWasDonedHandler } from '../../redux/taskDataCreator/taskDataCreatorAction';
 import { IComleteColumn, IFetchQuery, ITask } from '../../types/types';
 import { DoneTaskSVG } from './svgButtons';
 import './task-buttons.css';
@@ -21,6 +22,7 @@ export const ButtonDoneTask = (props: IProp) => {
   const userCurrentBoardColumns = useAppSelector(
     (state) => state.columnsSlice.userCurrentBoard.columns
   );
+  const isDoneTask = useAppSelector((state) => state.modalSlice.isDoneTask);
 
   const doneTaskHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     const doneColumnId = userCurrentBoardColumns
@@ -32,7 +34,7 @@ export const ButtonDoneTask = (props: IProp) => {
     const dataForFetch: IFetchQuery = {
       taskData: {
         title,
-        description,
+        description: whenTaskWasDonedHandler(description, isDoneTask),
         userId,
         order: 1,
         columnId: doneColumnId!.id,

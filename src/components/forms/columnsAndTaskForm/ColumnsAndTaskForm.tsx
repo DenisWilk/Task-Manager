@@ -20,18 +20,22 @@ import ButtonSuccess from '../../../UI/button-success/ButtonSuccess';
 import './columnsAndTasksForm.css';
 import { localeEN } from '../../../locales/localeEN';
 import { languages } from '../../../locales/languages';
-import { TaskFiles } from '../../task/TaskFiles';
+import {
+  changeTaskDescriptionHandler,
+  parseTaskDescriptionHandler,
+  whenTaskWasCreatedHandler,
+} from '../../../redux/taskDataCreator/taskDataCreatorAction';
 
 export default function ColumnsAndTaskForm() {
   const dispatch = useAppDispatch();
   const token = useAppSelector((state) => state.userSlice.token);
   const currentBoardId = useAppSelector((state) => state.boardsSlice.currentBoardId);
   const currentColumnId = useAppSelector((state) => state.columnsSlice.currentColumnId);
-  const editedTaskId = useAppSelector((state) => state.columnsSlice.editedTaskId);
+  const currentTaskId = useAppSelector((state) => state.columnsSlice.currentTaskId);
   const isCreateTask = useAppSelector((state) => state.modalSlice.isCreateTask);
   const isCreateColumn = useAppSelector((state) => state.modalSlice.isCreateColumn);
   const isEditTask = useAppSelector((state) => state.modalSlice.isEditTask);
-  const editedTaskData = useAppSelector((state) => state.columnsSlice.editedTaskData);
+  const currentTaskData = useAppSelector((state) => state.columnsSlice.currentTaskData);
   const [isCompare, setIsCompare] = useState<boolean>(false);
   const languageIndex = useAppSelector((state) => state.settingsSlice.languageIndex);
   const state = useAppSelector((store) => store.settingsSlice);
@@ -44,8 +48,8 @@ export default function ColumnsAndTaskForm() {
   } = useForm<IUserBoard>({
     mode: 'onBlur',
     defaultValues: {
-      title: isEditTask ? editedTaskData.title : '',
-      description: isEditTask ? editedTaskData.description : '',
+      title: isEditTask ? currentTaskData.title : '',
+      description: isEditTask ? parseTaskDescriptionHandler(currentTaskData) : '',
     },
   });
 
@@ -59,16 +63,25 @@ export default function ColumnsAndTaskForm() {
         }
       : isCreateTask
       ? {
-          taskData: { ...formData, userId: currentUser.userId },
+          taskData: {
+            title: formData.title,
+            description: whenTaskWasCreatedHandler(formData, isCreateTask, currentTaskData),
+            userId: currentUser.userId,
+          },
           boardId: currentBoardId,
           columnId: currentColumnId,
           token,
         }
       : {
-          taskData: { ...formData, userId: currentUser.userId, order: editedTaskData.order },
+          taskData: {
+            title: formData.title,
+            description: changeTaskDescriptionHandler(formData, currentTaskData),
+            userId: currentUser.userId,
+            order: currentTaskData.order,
+          },
           boardId: currentBoardId,
           columnId: currentColumnId,
-          taskId: editedTaskId,
+          taskId: currentTaskId,
           token,
         };
     isCreateColumn && dispatch(fetchAddNewUserColumns(dataForFetch));
@@ -126,9 +139,42 @@ export default function ColumnsAndTaskForm() {
           placeholder={localeEN.placeholderText.TASK_DESCRIPTION[state.languageIndex]}
           className="columns-and-task-form__description-input"
         />
-        {isEditTask && <TaskFiles />}
+        <section className="task-priority-select__container">
+          <label className={'task-priority-label ' + state.themeIndex} htmlFor="taskPriority">
+            {localeEN.taskPriorityLabel[languageIndex]}
+          </label>
+          <select
+            {...register('taskPriority', {
+              disabled: !isCreateTask && !isEditTask,
+            })}
+            id="taskPriority"
+            name="taskPriority"
+            defaultValue=""
+            className={'task-priority-select__selector ' + state.themeIndex}
+          >
+            <option className="priority-option" disabled value="">
+              {localeEN.taskPriorityDefaultOption[languageIndex]}
+            </option>
+            {taskPriority.map((priorityItem) => (
+              <option
+                style={{ color: `${priorityItem.color}` }}
+                key={priorityItem.index}
+                className="priority-option"
+                value={JSON.stringify(priorityItem)}
+              >
+                {localeEN.priority[languageIndex][Number(priorityItem.index)]}
+              </option>
+            ))}
+          </select>
+        </section>
+
         <ButtonSuccess isValid={isValid} isCompare={isCompare} />
       </form>
     </section>
   );
 }
+const taskPriority = [
+  { color: '#8B0000', index: '0' },
+  { color: '#FF8C00', index: '1' },
+  { color: '#FFD700', index: '2' },
+];

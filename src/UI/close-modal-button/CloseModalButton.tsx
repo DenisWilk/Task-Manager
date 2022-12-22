@@ -11,7 +11,9 @@ import {
   setIsRemoveTask,
   setModalOpen,
   setDeleteUser,
+  setIsShowTask,
 } from '../../redux/modal-slice/modalSlice';
+import { setCurrentColumnTitle } from '../../redux/columns-slice/columnsSlice';
 
 export default function CloseModalButton() {
   const state = useAppSelector((store) => store.settingsSlice);
@@ -26,6 +28,8 @@ export default function CloseModalButton() {
     dispatch(setIsCreateBoard(false));
     dispatch(setIsEditTask(false));
     dispatch(setDeleteUser(false));
+    dispatch(setIsShowTask(false));
+    dispatch(setCurrentColumnTitle(''));
   };
   return (
     <>

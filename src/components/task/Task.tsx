@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { IComleteColumn, ITask } from '../../types/types';
+import { IComleteColumn, ITask, ITaskDescriptionData } from '../../types/types';
 import { ButtonDeleteTask } from '../../UI/task-buttons/ButtonDeleteTask';
 import { ButtonDoneTask } from '../../UI/task-buttons/ButtonDoneTask';
 import { ButtonEditTask } from '../../UI/task-buttons/ButtonEditTask';
 import './task.css';
 import { Draggable } from 'react-beautiful-dnd';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Endpoints } from '../../endpoints/endpoints';
 import { localeEN } from '../../locales/localeEN';
+import { ButtonShowTask } from '../../UI/task-buttons/ButtonShowTask';
+import { setIsDoneTask } from '../../redux/modal-slice/modalSlice';
 
 interface IProp {
   task: ITask;
@@ -16,11 +18,15 @@ interface IProp {
 }
 
 export const Task = (props: IProp) => {
+  const dispatch = useAppDispatch();
   const { token } = useAppSelector((state) => state.userSlice);
   const { id, order, title, description, files } = props.task;
   const fileBtn = useRef<HTMLInputElement | null>(null);
   const [fileCounter, setFileCounter] = useState<number | undefined>(0);
   const { languageIndex } = useAppSelector((state) => state.settingsSlice);
+  const [currentTaskDescription, setCurrentTaskDescription] = useState<ITaskDescriptionData>();
+  const [taskPriorityColor, setTaskPriorityColor] = useState<string>();
+  const [taskPriority, setTaskPriority] = useState<string>();
 
   const handleFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
     await handleFetch(event.currentTarget.files![0]);
@@ -54,6 +60,25 @@ export const Task = (props: IProp) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files?.length]);
 
+  useEffect(() => {
+    dispatch(
+      setIsDoneTask(
+        localeEN.columnContet.DEFAULT_DONE_COLUMN.some((lang) => lang === props.column.title)
+      )
+    );
+  }, [dispatch, props.column.title]);
+
+  useEffect(() => {
+    const parsedDescription: ITaskDescriptionData = JSON.parse(description);
+    setCurrentTaskDescription(parsedDescription);
+    typeof parsedDescription !== 'undefined'
+      ? setTaskPriorityColor(parsedDescription.taskPriority!.color)
+      : setTaskPriorityColor('initial');
+    typeof parsedDescription !== 'undefined'
+      ? setTaskPriority(parsedDescription.taskPriority!.index!)
+      : setTaskPriority('');
+  }, [description]);
+
   return (
     <Draggable draggableId={id} index={props.index}>
       {(provided) => (
@@ -72,14 +97,14 @@ export const Task = (props: IProp) => {
           <div className="task__content-block">
             <h3 className="task__title">{title}</h3>
             <div className="task__description">
-              <p className="task__description_content">{`${description}`}</p>
+              <p className="task__description_content">
+                {currentTaskDescription ? currentTaskDescription!.description : null}
+              </p>
             </div>
           </div>
           <div className="task_button-block">
             <ButtonDoneTask id={id} task={props.task} column={props.column} />
             <ButtonEditTask id={id} column={props.column} />
-            <ButtonDeleteTask id={id} column={props.column} />
-
             <button
               className="upload-file-task"
               onClick={handleLoadFile}
@@ -97,7 +122,19 @@ export const Task = (props: IProp) => {
               accept="image/*"
             />
             <span className="task__counter-files">{fileCounter}</span>
+            <ButtonShowTask id={id} column={props.column} />
+            <ButtonDeleteTask id={id} column={props.column} />
           </div>
+          {typeof taskPriority !== 'undefined' ? (
+            <div
+              className="task-priority_container"
+              style={{ border: `1.5px solid ${taskPriorityColor}` }}
+            >
+              <p className="task-priority" style={{ color: `${taskPriorityColor}` }}>
+                {localeEN.priority[languageIndex][Number(taskPriority)]}
+              </p>
+            </div>
+          ) : null}
         </div>
       )}
     </Draggable>
