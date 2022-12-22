@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { localeEN } from '../../../locales/localeEN';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { setIsEditTask, setIsShowTask } from '../../../redux/modal-slice/modalSlice';
+import { useAppSelector } from '../../../redux/hooks';
 import { ITaskDescriptionData } from '../../../types/types';
+import EditTaskSwitcher from '../../../UI/edit-task-checkbox/EditTaskSwitcher';
 import Spinner from '../../../UI/spinner/Spinner';
 import { TaskFiles } from '../TaskFiles';
 import './showTaskData.css';
@@ -17,11 +17,6 @@ export default function ShowTaskData() {
   const [taskPriorityColor, setTaskPriorityColor] = useState<string>();
   const [taskPriority, setTaskPriority] = useState<string>();
 
-  const dispatch = useAppDispatch();
-  const letEditTask = () => {
-    dispatch(setIsEditTask(true));
-    dispatch(setIsShowTask(false));
-  };
   useEffect(() => {
     const parsedDescription: ITaskDescriptionData = JSON.parse(currentTaskData.description);
     setCurrentTaskDescription(parsedDescription);
@@ -51,20 +46,11 @@ export default function ShowTaskData() {
           : localeEN.showTaskDataContetnt.UNCOMPLEATE_TASK_MESSAGE[languageIndex]}
       </h4>
       {isShowTask && <TaskFiles />}
-      <div className="edit-checkbox__container">
-        <label className="task-data__edit-checkbox-label" htmlFor="task-data__edit-checkbox">
-          {localeEN.modalContetntMessage.CHANGE_TASK_CHECKBOX_LABEL[languageIndex]}
-        </label>
-        <input
-          type="checkbox"
-          id="task-data__edit-checkbox"
-          className="task-data__edit-checkbox"
-          disabled={localeEN.columnContet.DEFAULT_DONE_COLUMN.some(
-            (lang) => lang === currentColumnTtile
-          )}
-          onClick={letEditTask}
-        />
-      </div>
+      {localeEN.columnContet.DEFAULT_DONE_COLUMN.some(
+        (lang) => lang === currentColumnTtile
+      ) ? null : (
+        <EditTaskSwitcher />
+      )}
       {typeof taskPriority !== 'undefined' ? (
         <div
           className="task-priority-modal__container"

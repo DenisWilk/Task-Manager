@@ -54,7 +54,7 @@
 }
 .task-priority-modal__container{
   position: absolute;
-  top: -2px;
+  top: -1px;
   right: -1px;
   display: flex;
   justify-content: flex-start;
