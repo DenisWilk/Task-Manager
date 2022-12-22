@@ -1,4 +1,5 @@
-import { ITask, ITaskDescriptionData, IUserBoard } from './../../types/types';
+import { localeEN } from './../../locales/localeEN';
+import { ITask, ITaskDescriptionData, IUserBoard, IDate } from './../../types/types';
 export const whenTaskWasCreatedHandler = (
   formData: IUserBoard,
   isCreateTask: boolean,
@@ -63,25 +64,25 @@ export const parseTaskDescriptionHandler = (currentTaskData: ITask): string => {
 };
 
 export const getTaskCreateDate = () => {
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fry', 'Sat'];
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
   const createTaskDate = new Date();
   const date = createTaskDate.getDate();
   const day = createTaskDate.getDay();
   const month = createTaskDate.getMonth();
   const year = createTaskDate.getFullYear();
-  return `${days[day]}, ${date} ${months[month]}, ${year}`;
+  return { year, month, date, day };
+};
+
+export const getLocalizationCreateAndDoneTaskDateHandler = (
+  currentTaskDate: IDate,
+  languageIndex: number
+) => {
+  const finalDate =
+    typeof currentTaskDate === 'undefined'
+      ? localeEN.showTaskDataContetnt.UNCOMPLEATE_TASK_MESSAGE[languageIndex]
+      : `${localeEN.showTaskDataContetnt.DATE_DAYS[languageIndex][currentTaskDate.day]}, ${
+          currentTaskDate.date
+        } ${localeEN.showTaskDataContetnt.DATE_MONTH[languageIndex][currentTaskDate.month]} ${
+          currentTaskDate.year
+        } `;
+  return finalDate;
 };
