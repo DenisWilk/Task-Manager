@@ -26,7 +26,7 @@
 .task-data__description-container {
   width: 100%;
   height: 100px;
-  min-height: 250px;
+  min-height: 251px;
   overflow: auto;
   word-break: break-word;
   text-align: justify;
